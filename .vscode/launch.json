@@ -7,7 +7,7 @@
       "request": "launch",
       "url": "http://localhost:3000",
       "port": 9223,
-      "runtimeExecutable": "C:\\Users\\Oluwadamilola\\AppData\\Local\\Google\\Chrome SxS\\Application\\chrome.exe",
+      "runtimeExecutable": "chrome.exe",
       "runtimeArgs": ["--remote-debugging-port=9223"],
       "userDataDir": false,
       "webRoot": "${workspaceRoot}/src",
