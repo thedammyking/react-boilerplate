@@ -1,25 +1,25 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import Loadable from "react-loadable";
-import { INDEX } from "./routes";
-import AppliedRoute from "./AppliedRoute";
-import Loading from "../components/Loading";
+import React, { lazy, Suspense } from 'react'
+import { Switch, Route } from 'react-router-dom'
+import { INDEX } from './routes'
+import AppliedRoute from './AppliedRoute'
+import Loading from '../components/Loading'
 
-const Home = Loadable({
-  loader: () => import("../containers/Home"),
-  loading: Loading
-});
+const Home = lazy(() => import('../containers/Home'))
 
-const NotFound = Loadable({
-  loader: () => import("../containers/NotFound"),
-  loading: Loading
-});
+const NotFound = lazy(() => import('../containers/NotFound'))
 
 const Router = ({ childProps }) => (
-  <Switch>
-    <AppliedRoute path={INDEX} exact component={Home} props={childProps} />
-    <Route component={NotFound} />
-  </Switch>
-);
+    <Suspense fallback={Loading}>
+        <Switch>
+            <AppliedRoute
+                path={INDEX}
+                exact
+                component={Home}
+                props={childProps}
+            />
+            <Route component={NotFound} />
+        </Switch>
+    </Suspense>
+)
 
-export default Router;
+export default Router
