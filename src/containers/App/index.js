@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ScrollToTop from "../../ScrollToTop";
+import ScrollToTop from "../../utils/ScrollToTop";
 import Router from "../../router";
 
 class App extends Component {

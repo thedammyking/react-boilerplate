@@ -1,13 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
-import { lighten } from "polished";
-
-export const color = {
-  primary: "#3498db",
-  secondary: "#e74c3c",
-  white: "#ffffff",
-  dark: lighten(0.4, "#000")
-};
-
+import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     html {
         font-size: 62.5%;
