@@ -1,21 +1,15 @@
-import React from 'react'
-import App from './containers/App'
-import { Provider } from 'react-redux'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { GlobalStyle } from './components/styled'
-import 'normalize.css'
+import React from 'react';
+import App from 'app';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+import 'styles/generic.scss';
 
 const Root = ({ store }) => (
-    <Provider store={store}>
-        <BrowserRouter>
-            <React.Fragment>
-                <GlobalStyle />
-                <Switch>
-                    <Route path="/" component={App} />
-                </Switch>
-            </React.Fragment>
-        </BrowserRouter>
-    </Provider>
-)
+  <Provider store={store}>
+    <BrowserRouter>
+      <Route path="/" component={App} />
+    </BrowserRouter>
+  </Provider>
+);
 
-export default Root
+export default Root;

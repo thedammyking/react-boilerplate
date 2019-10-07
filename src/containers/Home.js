@@ -1,11 +1,8 @@
-import React from "react";
+import React from 'react';
+import ReactHome from 'components/react-home';
 
 const Home = () => {
-  return (
-    <div>
-      <h1>My React Boilerplate</h1>
-    </div>
-  );
+  return <ReactHome />;
 };
 
 export default Home;

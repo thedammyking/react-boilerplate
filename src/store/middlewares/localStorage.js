@@ -1,20 +1,20 @@
-import { setToken } from "../../utils/agents";
-import { LOGIN, LOGOUT, REGISTER } from "../actions/types";
+import { setToken } from 'libs';
+import { LOGIN, LOGOUT } from '../actions/types';
 
 const localStorageMiddleware = store => next => action => {
-  if (action.type === REGISTER || action.type === LOGIN) {
+  if (action.type === LOGIN) {
     let token;
     if (!action.error) {
       token = action.token;
-      window.localStorage.setItem("jwt", token);
+      window.localStorage.setItem('jwt', token);
       setToken(token);
     }
   } else if (action.type === LOGOUT) {
-    window.localStorage.setItem("jwt", "");
+    window.localStorage.removeItem('jwt');
     setToken(null);
   }
 
   next(action);
 };
 
-export default localStorageMiddleware ;
+export default localStorageMiddleware;
