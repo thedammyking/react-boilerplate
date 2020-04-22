@@ -1,17 +1,24 @@
-import { setToken } from 'libs';
-import { LOGIN, LOGOUT } from '../actions/types';
+import { LOGIN, LOGOUT, RESET_TOKEN, UPDATE_USER } from '../types';
+import { LocalStorageService } from 'services';
 
-const localStorageMiddleware = store => next => action => {
-  if (action.type === LOGIN) {
-    let token;
-    if (!action.error) {
-      token = action.token;
-      window.localStorage.setItem('jwt', token);
-      setToken(token);
+const localStorageMiddleware = (store) => (next) => (action) => {
+  const { type, accessToken, refreshToken, user, error } = action;
+  if (type === LOGIN) {
+    if (!error) {
+      LocalStorageService.setToken({ accessToken, refreshToken });
+      LocalStorageService.setUser(user);
     }
-  } else if (action.type === LOGOUT) {
-    window.localStorage.removeItem('jwt');
-    setToken(null);
+  }
+  if (type === UPDATE_USER) {
+    if (!error) {
+      LocalStorageService.setUser(user);
+    }
+  } else if (type === RESET_TOKEN) {
+    if (!error) {
+      LocalStorageService.setToken({ accessToken, refreshToken });
+    }
+  } else if (type === LOGOUT) {
+    LocalStorageService.clearStorage();
   }
 
   next(action);

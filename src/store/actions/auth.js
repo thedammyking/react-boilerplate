@@ -3,43 +3,43 @@ import {
   LOGOUT,
   ASYNC_START,
   LOG_ERROR,
-  LOGIN_PAGE_UNLOADED
-} from './types';
-import Auth from 'services/auth';
+  LOGIN_PAGE_UNLOADED,
+} from '../types';
+import { AuthRequestService } from 'services';
 
-const login = data => ({
+const login = (data) => ({
   type: LOGIN,
-  ...data
+  ...data,
 });
 
 const onLoginPageUnload = () => ({
-  type: LOGIN_PAGE_UNLOADED
+  type: LOGIN_PAGE_UNLOADED,
 });
 
-export const logout = () => dispatch =>
+export const logout = () => (dispatch) =>
   dispatch({
-    type: LOGOUT
+    type: LOGOUT,
   });
 
-export const loginRequest = body => dispatch => {
+export const loginRequest = (body) => (dispatch) => {
   dispatch({
     type: ASYNC_START,
-    subtype: LOGIN
+    subtype: LOGIN,
   });
-  return Auth.login(body)
-    .then(data => {
+  return AuthRequestService.login(body)
+    .then((data) => {
       const { token, status } = data;
       if (status === 200) {
         dispatch(
           login({
-            token
+            token,
           })
         );
         dispatch(onLoginPageUnload());
         return data;
       }
       dispatch({
-        type: LOG_ERROR
+        type: LOG_ERROR,
       });
       return null;
     })
@@ -47,12 +47,12 @@ export const loginRequest = body => dispatch => {
       if (response !== undefined && response.data.message) {
         dispatch({
           type: LOG_ERROR,
-          error: response.data.message
+          error: response.data.message,
         });
         return null;
       }
       dispatch({
-        type: LOG_ERROR
+        type: LOG_ERROR,
       });
       return null;
     });

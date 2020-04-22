@@ -1,9 +1,4 @@
-import {
-  LOGIN,
-  ASYNC_START,
-  LOG_ERROR,
-  LOGIN_PAGE_UNLOADED,
-} from "../actions/types"
+import { LOGIN, ASYNC_START, LOG_ERROR, LOGIN_PAGE_UNLOADED } from '../types';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -12,24 +7,24 @@ export default (state = {}, action) => {
         ...state,
         inProgress: false,
         errors: action.error || null,
-      }
+      };
     case ASYNC_START:
       if (action.subtype === LOGIN) {
         return {
           ...state,
           inProgress: true,
-        }
+        };
       }
-      return state
+      return state;
     case LOG_ERROR:
       return {
         ...state,
         inProgress: false,
-        error: action.error || "Sorry, something went wrong. Please try again",
-      }
+        error: action.error || 'Sorry, something went wrong. Please try again',
+      };
     case LOGIN_PAGE_UNLOADED:
-      return {}
+      return {};
     default:
-      return state
+      return state;
   }
-}
+};

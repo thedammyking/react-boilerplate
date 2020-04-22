@@ -1,18 +1,15 @@
-import { window } from 'browser-monads';
-import { APP_LOAD, REDIRECT } from './types';
-import { setToken } from 'libs';
+import { APP_LOAD, REDIRECT } from '../types';
+import { LocalStorageService } from 'services';
 
 export const onAppLoad = () => {
-  const token = window.localStorage.getItem('jwt');
-  if (token) {
-    setToken(token);
-  }
+  const isAuthenticated = !!LocalStorageService.getAccessToken();
+
   return {
     type: APP_LOAD,
-    token
+    isAuthenticated,
   };
 };
 
 export const onRedirect = () => ({
-  type: REDIRECT
+  type: REDIRECT,
 });
