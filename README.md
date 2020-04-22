@@ -10,6 +10,7 @@ This boilerplate was bootstrapped with [Create React App](https://github.com/fac
 - React Helmet
 - Axios
 - Docker
+- Cache Control
 
 ## Available Scripts
 
