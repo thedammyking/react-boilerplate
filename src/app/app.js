@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { INDEX } from './paths';
 import { AppliedRoute } from './routes';
@@ -47,7 +47,8 @@ class App extends Component {
                 component={Home}
                 props={{ isAuthenticated }}
               />
-              <Route component={NotFound} />
+              <Route path="/404" component={NotFound} />
+              <Redirect to="/404" />
             </Switch>
           </Suspense>
         </ErrorBoundary>

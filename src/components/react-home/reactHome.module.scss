@@ -3,6 +3,10 @@
 
     &Logo {
         height: 40vmin;
+
+        @media (prefers-reduced-motion: no-preference) {
+            animation: App-logo-spin infinite 20s linear;
+        }
     }
 
     &Header {
@@ -16,6 +20,18 @@
     }
 
     &Link {
-        color: #09d3ac;
+        color: #61dafb;
+        margin-top: 10px;
+    }
+}
+
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }
