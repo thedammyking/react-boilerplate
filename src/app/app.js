@@ -9,8 +9,8 @@ import ErrorBoundary from 'components/ErrorBoundary';
 import * as actions from './store/actions';
 import '../styles/typography.scss';
 
-const Home = lazy(() => import('containers/Home'));
-const NotFound = lazy(() => import('containers/NotFound'));
+const Home = lazy(() => import('pages/Home'));
+const NotFound = lazy(() => import('pages/NotFound'));
 
 const mapStateToProps = ({
   app: { appLoaded, isAuthenticated, redirectTo },
