@@ -1,16 +1,11 @@
-import React from "react";
+import React from 'react';
 
-const Loading = ({ isLoading, error }) => {
-  // Handle the loading state
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  // Handle the error state
-  else if (error) {
-    return <div>Sorry, there was a problem loading the page.</div>;
-  } else {
-    return null;
-  }
+const Loading = () => {
+  return (
+    <div style={{ height: '100vh', width: '100vw', display: 'flex' }}>
+      <h1 style={{ margin: 'auto' }}>Loading...</h1>
+    </div>
+  );
 };
 
 export default Loading;

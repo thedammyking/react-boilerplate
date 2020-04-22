@@ -1,7 +1,6 @@
 @import 'variables';
 @import 'breakpoint';
 @import 'normalize';
-@import 'typography';
 
 html {
     font-size: 62.5%;
@@ -34,7 +33,7 @@ body {
     max-width: 2560px;
     margin: 0 auto;
     color: $white;
-    background: $kudi-blue;
+    background: $background;
 }
 
 *,

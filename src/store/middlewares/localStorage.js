@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, RESET_TOKEN, UPDATE_USER } from '../types';
+import { LOGIN, LOGOUT /*RESET_TOKEN, UPDATE_USER*/ } from 'app/store';
 import { LocalStorageService } from 'services';
 
 const localStorageMiddleware = (store) => (next) => (action) => {
@@ -8,15 +8,14 @@ const localStorageMiddleware = (store) => (next) => (action) => {
       LocalStorageService.setToken({ accessToken, refreshToken });
       LocalStorageService.setUser(user);
     }
-  }
-  if (type === UPDATE_USER) {
-    if (!error) {
-      LocalStorageService.setUser(user);
-    }
-  } else if (type === RESET_TOKEN) {
-    if (!error) {
-      LocalStorageService.setToken({ accessToken, refreshToken });
-    }
+    // } else if (type === UPDATE_USER) {
+    //   if (!error) {
+    //     LocalStorageService.setUser(user);
+    //   }
+    // } else if (type === RESET_TOKEN) {
+    //   if (!error) {
+    //     LocalStorageService.setToken({ accessToken, refreshToken });
+    //   }
   } else if (type === LOGOUT) {
     LocalStorageService.clearStorage();
   }

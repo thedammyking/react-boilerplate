@@ -1,4 +1,4 @@
-import { APP_LOAD, REDIRECT } from '../types';
+import { APP_LOAD, REDIRECT } from './types';
 import { LocalStorageService } from 'services';
 
 export const onAppLoad = () => {

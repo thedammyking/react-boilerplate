@@ -1,5 +1,3 @@
-import { window } from 'browser-monads';
-
 const _setMultipleItems = (storageItems) => {
   storageItems.map((item) => window.localStorage.setItem(item[0], item[1]));
 };

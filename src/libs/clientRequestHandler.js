@@ -38,7 +38,7 @@ serviceInstance.interceptors.response.use(
       originalRequest.url === refreshTokenUrl
     ) {
       LocalStorageService.clearStorage();
-      navigate('/sign-in');
+      navigate('/login');
       return Promise.reject(error);
     }
 

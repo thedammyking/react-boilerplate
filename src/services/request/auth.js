@@ -1,12 +1,12 @@
-import { serviceInstance } from "lib"
+import { serviceInstance } from 'libs';
 
 export default {
-  signIn: body =>
+  signIn: (body) =>
     serviceInstance
-      .post(`/auth/signin`, { ...body })
+      .post(`/auth/login`, { ...body })
       .then(({ data: { data } }) => data),
-  signUp: body =>
+  signUp: (body) =>
     serviceInstance
-      .post(`/auth/signup`, body)
+      .post(`/auth/register`, body)
       .then(({ data: { data } }) => data),
-}
+};
